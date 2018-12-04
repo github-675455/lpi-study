@@ -15,6 +15,8 @@ wrong=0
 
 baseFolderForTesting="testArea/";
 
+mkdir -p $baseFolderForTesting;
+
 while true
 do
 	user_permission=$(random_octa_permission)
