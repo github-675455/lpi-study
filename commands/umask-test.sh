@@ -25,7 +25,7 @@ do
 	currentParam=$user_permission$group_permission$others_permission	
 	clear;
 	echo "what is the resulting permission for a new file when using ";
-	echo "umask $user_permission$group_permission$others_permission?";
+	echo -e "\033[32mumask $user_permission$group_permission$others_permission\033[0m?";
 	echo "P.S. It should be in the format: ---------";
 	echo;
 	echo "To end the simulation, use \"exit\".";
@@ -43,8 +43,8 @@ do
 	echo;
 	if [ "$file_answer" = "exit" ] || [ $total -eq $limit_questions ]; then
 		echo "Your results:";
-		echo "	Correct: $correct";
-		echo "	Wrong: $wrong";
+		echo -e "	Correct: \033[32m$correct\033[0m";
+		echo -e "	Wrong: \033[31m$wrong\033[0m";
 		echo "  Total: $total"
 		break;
 	fi
@@ -52,15 +52,15 @@ do
 	total=$(expr $total + 2);
 
 	if [ "$file_answer" = "$fileAnswer" ]; then
-		echo "correct!";
+		echo -e "\033[32mcorrect\033[0m!";
 		correct=$(expr $correct + 1);
 	else
-		echo "wrong! the right answer for file is $fileAnswer";
+		echo -e "\033[31mwrong! the right answer for file is $fileAnswer\033[0m";
 		wrong=$(expr $wrong + 1);
 	fi
 
         echo "what is the resulting permission for a new folder when using ";
-        echo "umask $user_permission$group_permission$others_permission?";
+        echo -e "\033[32mumask $user_permission$group_permission$others_permission\033[0m?";
 	
         read -e -n 9 folder_answer;
 	echo;
@@ -74,15 +74,15 @@ do
         fi
 
         if [ "$folder_answer" = "$folderAnswer" ]; then
-                echo "correct!";
+                echo -e "\033[32mcorrect!\033[0m";
                 correct=$(expr $correct + 1);
         else
-		echo "wrong! the right answer for folder is $folderAnswer";
+		echo -e "\033[31mwrong!\033[0m the right answer for folder is $folderAnswer";
                 wrong=$(expr $wrong + 1);
         fi
 
 	echo;
-	echo "Press enter to next line.";
+	echo -e "\033[32mPress enter to next line.\033[0m";
 	read;
 
 done
