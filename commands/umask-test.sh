@@ -56,7 +56,6 @@ do
 		correct=$(expr $correct + 1);
 	else
 		echo "wrong! the right answer for file is $fileAnswer";
-		echo "The right answer for folder is $folderAnswer";
 		wrong=$(expr $wrong + 1);
 	fi
 
@@ -66,6 +65,7 @@ do
         read -e -n 9 folder_answer;
 	echo;
         if [ "$folder_answer" = "exit" ] || [ $total -eq $limit_questions ]; then
+		wrong=$(expr $wrong + 1);
                 echo "Your results:";
                 echo "  Correct: $correct";
                 echo "  Wrong: $wrong";
@@ -78,7 +78,6 @@ do
                 correct=$(expr $correct + 1);
         else
 		echo "wrong! the right answer for folder is $folderAnswer";
-                echo "The right answer for folder is $folderAnswer";
                 wrong=$(expr $wrong + 1);
         fi
 
